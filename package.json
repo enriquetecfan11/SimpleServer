@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "express-router": "^0.0.1",
+    "nodemon": "^2.0.16"
+  }
+}
