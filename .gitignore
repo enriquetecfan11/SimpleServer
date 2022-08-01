@@ -1,0 +1,14 @@
+# ignore ALL .log files
+*.log
+
+# ignore ALL files in ANY directory named temp
+temp/
+
+# ignore node_modules
+node_modules/
+
+# ignore all files in the .git directory
+.git/
+
+# ignore package-lock.json
+package-lock.json
