@@ -1,6 +1,7 @@
-# SimpleServer
+<h1> Simple Server </h1>
 
-A simple server made with nodejs and express
+A simple server made with nodejs and express, 
+first for learn how all works and second for test IOT Devices easy
 
 The server have this routes:
 
