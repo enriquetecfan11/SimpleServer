@@ -31,22 +31,22 @@ app.post('/sensores', function (req, res) {
     const deviceTimestampString = deviceTimestampConverted.toLocaleTimeString();
 
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-    console.log("Received Data Time -> ", timeString);
-    console.log("Recieved a post request");
-    console.log("Raw Request ->  ", req.body);
-    console.log(".............................................");
-    console.log("Device: ", req.body.device);
-    console.log("Data: ", req.body.data);
-    console.log("Device Timestamp: ", req.body.time);
-    console.log("Device Timestamp Converted: ", deviceTimestampString);
-    console.log("WiFi RSSI: ", req.body.WiFi);
-    console.log("LoRa Packet RSSI: ", req.body.LoRa);
-    console.log("LoRa Packet SNR: ", req.body.LoRaSNR);
-    console.log("Tamaño del paquete Recibido: ", req.body.packetSize);
-    console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n") ;
+    console.log("Received time: " + timeString + "\n");
+
+    console.log("Device: " + req.body.device + "\n");
+    console.log("Device Timestamp: " + deviceTimestampString + "\n");
+    console.log("Device Timestamp Converted: " + deviceTimestampConverted + "\n");
+    console.log("Data: " + req.body.data + "\n");
+
+    console.log("LoRa Packet RSSI: ", req.body.LoRa + "\n");
+    console.log("LoRa Packet SNR: ", req.body.LoRaSNR + "\n");
+    console.log("Tamaño del paquete Recibido: ", req.body.packetSize + "\n");
+
+    console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
 
     res.sendStatus(201);
 });
+
 
 app.post('/sensor', function (req, res) {
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
@@ -59,5 +59,3 @@ app.post('/sensor', function (req, res) {
 app.listen(port, () => {
     console.log('🚀 Server is running on port: ' + port);
 });
-
-

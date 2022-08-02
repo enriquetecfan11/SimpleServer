@@ -1,7 +1,7 @@
 -- Create a new table for estacion de temperatura with this fields:
 -- {	
---   	"dispositivo" : "{device}",
---   	"hora" : {time},
+--   "dispositivo" : "{device}",
+--   "hora" : {time},
 -- 	"temperatura": "{customData#temperature}",
 -- 	"humedadAire": "{customData#humidity}",  
 -- 	"rain": "{customData#Rain}",
