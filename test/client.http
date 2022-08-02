@@ -1,10 +1,10 @@
 ### Check if the api works
-GET http://localhost:3000/ HTTP/1.1
+GET http://localhost:3000/api/ HTTP/1.1
 Content-Type: application/json
 
 
 ### Post to sensor
-POST http://localhost:3000/sensor HTTP/1.1
+POST http://localhost:3000/api/sensor HTTP/1.1
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 
 ### Post to sensores
 
-POST http://localhost:3000/sensores HTTP/1.1
+POST http://localhost:3000/api/sensores HTTP/1.1
 Content-Type: application/json
 
 ## All fields are required
