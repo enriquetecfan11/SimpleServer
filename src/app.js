@@ -1,10 +1,8 @@
 var morgan = require('morgan');
 var express = require('express');
-
 var app = express();
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
-
 const ApiRoutes = require('./routes/apiRoutes');
 
 app.use(morgan("dev"));
@@ -20,6 +18,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+// Routes
 app.use("/api", ApiRoutes);
 
 
