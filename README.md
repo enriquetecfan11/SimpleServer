@@ -26,3 +26,7 @@ following this steps:
 
 3 - If you want to view the console.log of the container use this:
     "sudo docker logs -f <Nombre del contenedor>"
+ 
+ 
+Docker command to use postgres -> docker run --name postgres -e POSTGRES_PASSWORD=yourpassword   -p 5432:5432 -d postgres
+NOTE: Defautl DB is postgres
