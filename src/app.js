@@ -3,19 +3,24 @@ var express = require('express');
 
 var app = express();
 var bodyParser = require('body-parser');
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4000;
 
-// Database model
-const Sensores = require("./models/SensorModel")
+// Database
+const db = require('./models');
 
-// Database model sync
-Sensores.sync({ force: false }).then(() => {
-    // Table created
-    console.log('Table created');
-}).catch(err => {
-    // Table couldn't be created
-    console.error('Table couldn\'t be created');
-});
+db.sequelize.sync()
+    .then(() => {
+        console.log("Synced db.");
+    })
+    .catch((err) => {
+        console.log("Failed to sync db: " + err.message);
+    });
+
+
+// // drop the table if it already exists
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
 
 // Middlewares
 app.use(morgan("dev"));

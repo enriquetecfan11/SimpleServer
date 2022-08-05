@@ -1,4 +1,9 @@
-const Sensores = require("../models/SensorModel")
+// const Medidas = require("../models/MedidasModel");
+// const Sensores = require("../models/SensorModel")
+
+const db = require('../models')
+const Sensores = db.sensores;
+const Medidas = db.medidas;
 
 const apiWorks = (req, res) => {
     res.status(200).json({
@@ -31,43 +36,32 @@ const postSensores = (req, res) => {
 }
 
 const postSensor = (req, res) => {
-
-    var date = new Date();
-    var timeString = date.toLocaleTimeString();
-
-    // var id = req.body.id;
     var dispositivo = req.body.dispositivo;
 
-
-    // Insert id and dispositivo into the database
-    Sensores.create({
-        dispositivo: dispositivo
-    }).then(sensor => {
-        res.status(201).json(sensor);
-    }).catch(err => {
-        res.sendStatus(500);
-    });
-
-    // If dispositivo is equal to other dispositivo, return 409
-    Sensores.findOne({
-        where: {
-            dispositivo: dispositivo
-        }
-    }).then(sensor => {
-        if (sensor) {
-            res.sendStatus(409);
-        }
+    // Validate request
+    if (!dispositivo) {
+        res.status(400).send({
+            message: "Content can not be empty!"
+        });
+        return;
     }
-    ).catch(err => {
-        res.sendStatus(500);
-    });
-    
-    console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-    console.log("Received time: " + timeString + "\n")
-    console.log("Recieved a post request" + "\n");
-    console.log("Raw Request ->  ", req.body + "\n");
-    console.log("Dispositivo: " + dispositivo + "\n");
-    console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+
+    // // Create a Sensor object
+    const sensor = {
+        dispositivo: dispositivo,
+    }
+
+    // Save Sensor in the database
+    Sensores.create(sensor)
+        .then(data => {
+            res.send(data);
+        }
+        ).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while creating the Sensor."
+            });
+        });
+
 }
 
 const getSensores = (req, res) => {
@@ -116,6 +110,51 @@ const deleteSensorById = (req, res) => {
     });
 }
 
+const postMedidas = (req, res) => {
+    var date = new Date();
+
+    var dispositivo = req.body.dispositivo;
+    var timestamp = req.body.timestamp;
+    var temperatura = req.body.temperatura;
+    var humedad = req.body.humedad;
+
+    // Insert into database
+    Medidas.create({
+        dispositivo: dispositivo,
+        timestamp: timestamp,
+        temperatura: temperatura,
+        humedad: humedad
+    }).then(medida => {
+        res.status(201).json(medida);
+    }
+    ).catch(err => {
+        res.sendStatus(500);
+    });
+
+
+    console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+    console.log("Received time: " + date.toLocaleTimeString() + "\n")
+    console.log("Recieved a post request" + "\n");
+    // console.log("Raw Request ->  ", req.body + "\n");
+    console.log("Dispositivo: " + dispositivo + "\n");
+    console.log("Timestamp: " + timestamp + "\n");
+    // Timestamp to local time
+    var fechasensor = new Date(timestamp);
+    console.log("Timestamp Converted: " + fechasensor.toLocaleTimeString() + "\n");
+    console.log("Temperatura: " + temperatura + "\n");
+    console.log("Humedad: " + humedad + "\n");
+    console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+}
+
+const getMedidas = (req, res) => {
+    Medidas.findAll().then(medidas => {
+        res.status(200).json(medidas);
+    }
+    ).catch(err => {
+        res.sendStatus(500);
+    });
+}
+
 
 module.exports = {
     apiWorks,
@@ -123,5 +162,7 @@ module.exports = {
     postSensor,
     getSensores,
     getSensoresByID,
-    deleteSensorById
+    deleteSensorById,
+    postMedidas,
+    getMedidas
 }
