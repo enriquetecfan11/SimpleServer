@@ -1,6 +1,3 @@
-// const Medidas = require("../models/MedidasModel");
-// const Sensores = require("../models/SensorModel")
-
 const db = require('../models')
 const Sensores = db.sensores;
 const Medidas = db.medidas;

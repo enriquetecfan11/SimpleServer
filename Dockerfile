@@ -1,11 +1,12 @@
-FROM node:16.15.1
+# Node aplication for the dockerfile language
+FROM node:12.18.1
 
 WORKDIR /app
 
-COPY ["package.json", "./"]
+COPY ["package.json", "package-lock.json*", "./"]
 
 RUN npm install
 
 COPY . .
 
-CMD [ "node", "app.js" ]
+CMD [ "node", "server.js" ]

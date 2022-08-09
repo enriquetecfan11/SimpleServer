@@ -2,7 +2,7 @@
   "name": "iotserver",
   "version": "1.0.0",
   "description": "A server to test IOT WiFi devices",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js",
