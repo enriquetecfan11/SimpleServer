@@ -23,24 +23,20 @@ const db = require('./app/models');
 
 db.sequelize.sync()
     .then(() => {
-        console.log("Synced db.");
+        console.log("Successfully connected to the database");
     })
     .catch((err) => {
         console.log("Failed to sync db: " + err.message);
     });
 
-// // drop the table if it already exists
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
-});
-
+// drop the table if it already exists
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
 
 // Routes
-
-// Simple Route
-
 app.get('/', (req, res) => {
-    res.json({ message: "Hello World" });
+    res.json({ message: "Hello World, the api works" });
 });
 
 const ApiRoutes = require('./app/routes/apiRoutes');

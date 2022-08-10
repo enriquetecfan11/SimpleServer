@@ -1,6 +1,7 @@
 const db = require('../models')
 const Sensores = db.sensores;
 const Medidas = db.medidas;
+const Pruebas = db.pruebas;
 
 const apiWorks = (req, res) => {
     res.status(200).json({
@@ -11,25 +12,42 @@ const apiWorks = (req, res) => {
 const postSensores = (req, res) => {
     var date = new Date();
     var timeString = date.toLocaleTimeString();
-    const deviceTimestampConverted = new Date(req.body.time);
-    const deviceTimestampString = deviceTimestampConverted.toLocaleTimeString();
+    var dispositivo = req.body.device;
+    var wifiRssi = req.body.wifiRssi;
+    var data = req.body.data;
+    var rssi = req.body.rssi;
+    var snr = req.body.snr;
+    var packetSize = req.body.packetSize;
 
-    console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+    const medidas_prueba = {
+        dispositivo: dispositivo,
+        wifiRssi: wifiRssi,
+        data: data,
+        rssi: rssi,
+        snr: snr,
+        packetSize: packetSize
+    }
 
-    console.log("Received time: " + timeString + "\n");
+    Pruebas.create(medidas_prueba)
+        .then(data => {
+            res.status(201).json(data);
+        }
+        ).catch(err => {
+            res.sendStatus(500);
+            console.log(err);
+        });
 
-    console.log("Device: " + req.body.device + "\n");
-    console.log("Device Timestamp: " + deviceTimestampString + "\n");
-    console.log("Device Timestamp Converted: " + deviceTimestampConverted + "\n");
-    console.log("Data: " + req.body.data + "\n");
-
-    console.log("LoRa Packet RSSI: ", req.body.LoRa + "\n");
-    console.log("LoRa Packet SNR: ", req.body.LoRaSNR + "\n");
-    console.log("Tamaño del paquete Recibido: ", req.body.packetSize + "\n");
-
-    console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-
-    res.sendStatus(201);
+    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+    // console.log("Received time: " + timeString + "\n")
+    // console.log("Recieved a post request" + "\n");
+    // // console.log("Raw Request ->  ", req.body + "\n");
+    // console.log("Dispositivo: " + dispositivo + "\n");
+    // console.log("WifiRSSI: " + wifiRssi + "\n");
+    // console.log("Data: " + data + "\n");
+    // console.log("LoRaRSSI: " + rssi + "\n");
+    // console.log("LoRaSNR: " + snr + "\n");
+    // console.log("PacketSize: " + packetSize + "\n");
+    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
 }
 
 const postSensor = (req, res) => {
@@ -62,7 +80,7 @@ const postSensor = (req, res) => {
 }
 
 const getSensores = (req, res) => {
-    Sensores.findAll().then(sensores => {
+    Pruebas.findAll().then(sensores => {
         res.status(200).json(sensores);
     }
     ).catch(err => {
