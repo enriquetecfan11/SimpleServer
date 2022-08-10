@@ -3,11 +3,6 @@ const Sensores = db.sensores;
 const Medidas = db.medidas;
 const Pruebas = db.pruebas;
 
-const apiWorks = (req, res) => {
-    res.status(200).json({
-        message: 'Api Works'
-    });
-}
 
 const postSensores = (req, res) => {
     var date = new Date();
