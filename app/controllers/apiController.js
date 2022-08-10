@@ -42,21 +42,6 @@ const postSensores = (req, res) => {
             res.sendStatus(500);
             console.log(err);
         });
-
-    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-    // console.log("Received time: " + timeString + "\n")
-    // console.log("Recieved a post request" + "\n");
-    // console.log("Dispositivo: " + dispositivo + "\n");
-    // console.log("WifiRSSI: " + wifiRssi + "\n");
-    // console.log("Data: " + data + "\n");
-    // console.log("Temperatura: " + temperatura + "\n");
-    // console.log("Humedad: " + humedad + "\n");
-    // console.log("Velocidad del Viento: " + windSpeed + "\n");
-    // console.log("LoRaRSSI: " + rssi + "\n");
-    // console.log("LoRaSNR: " + snr + "\n");
-    // console.log("PacketSize: " + packetSize + "\n");
-    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-    // res.sendStatus(200);
 }
 
 const postSensor = (req, res) => {
