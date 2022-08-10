@@ -18,11 +18,17 @@ const postSensores = (req, res) => {
     var rssi = req.body.rssi;
     var snr = req.body.snr;
     var packetSize = req.body.packetSize;
+    var temperatura = data.replace(/{/g, "").replace(/}/g, "").replace(/:/g, ",").split(",")[1];
+    var humedad = data.replace(/{/g, "").replace(/}/g, "").replace(/:/g, ",").split(",")[3];
+    var windSpeed = data.replace(/{/g, "").replace(/}/g, "").replace(/:/g, ",").split(",")[5];
 
     const medidas_prueba = {
         dispositivo: dispositivo,
         wifiRssi: wifiRssi,
         data: data,
+        temperatura: temperatura,
+        humedad: humedad,
+        windspeed: windSpeed,
         rssi: rssi,
         snr: snr,
         packetSize: packetSize
@@ -40,14 +46,17 @@ const postSensores = (req, res) => {
     // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
     // console.log("Received time: " + timeString + "\n")
     // console.log("Recieved a post request" + "\n");
-    // // console.log("Raw Request ->  ", req.body + "\n");
     // console.log("Dispositivo: " + dispositivo + "\n");
     // console.log("WifiRSSI: " + wifiRssi + "\n");
     // console.log("Data: " + data + "\n");
+    // console.log("Temperatura: " + temperatura + "\n");
+    // console.log("Humedad: " + humedad + "\n");
+    // console.log("Velocidad del Viento: " + windSpeed + "\n");
     // console.log("LoRaRSSI: " + rssi + "\n");
     // console.log("LoRaSNR: " + snr + "\n");
     // console.log("PacketSize: " + packetSize + "\n");
     // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+    // res.sendStatus(200);
 }
 
 const postSensor = (req, res) => {

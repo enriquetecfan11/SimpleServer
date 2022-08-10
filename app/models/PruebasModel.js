@@ -17,6 +17,18 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
+        temperatura: {
+            type: Sequelize.DECIMAL(10, 2),
+            allowNull: false
+        },
+        humedad: {
+            type: Sequelize.DECIMAL(10, 2),
+            allowNull: false
+        },
+        windspeed: {
+            type: Sequelize.DECIMAL(10, 2),
+            allowNull: false
+        },
         rssi: {
             type: Sequelize.DECIMAL(10, 2),
             allowNull: false
