@@ -161,7 +161,6 @@ const getMedidas = (req, res) => {
 
 
 module.exports = {
-    apiWorks,
     postSensores,
     postSensor,
     getSensores,

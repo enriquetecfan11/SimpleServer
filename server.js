@@ -3,20 +3,15 @@ const app = express();
 
 const cors = require('cors');
 
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
+const pathToSwaggerDoc = require('path').join(__dirname, 'swagger.json');
 
 // Express Options
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-// app.use(function (req, res, next) {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Credentials', 'true');
-//     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
-//     res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-//     res.setHeader('Cache-Control', 'no-cache');
-//     next();
-// });
 
 
 // Morgan Options
@@ -46,6 +41,25 @@ app.get('/', (req, res) => {
 
 const ApiRoutes = require('./app/routes/apiRoutes');
 app.use('/api', ApiRoutes);
+
+
+// Swagger Options
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title: 'Simple IOT Server',
+            description: 'Simple IOT Server',
+            contact: {
+                name: 'Enrique Rodriguez Vela'
+            },
+            servers: ['http://localhost:3000']
+        }
+    },
+    apis: ['./app/routes/apiRoutes.js']
+}
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJsDoc(swaggerOptions)));
+
 
 // Start server
 var port = process.env.PORT || 4000;

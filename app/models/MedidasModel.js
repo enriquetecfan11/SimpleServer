@@ -20,10 +20,10 @@ module.exports = (sequelize, Sequelize) => {
         humedad: {
             type: Sequelize.FLOAT,
             allowNull: false
-        }
+        },
     },
         {
-            timestamps: false,
+            timestamps: true,
         });
 
     return Medidas;
