@@ -1,21 +1,26 @@
-
-
-# Simple IOT Server
-
+<h1  align="center">Simple IOT Server</h1>
+<p  align="center">
 A simple server made with NodeJS, Express and PostgreSQL Datab for test IOT Devices easy
-This is and open source project if you want to collaborate look at issues and choose you want to collaborate 
+<p>
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-[![GitHub stars](https://img.shields.io/github/stars/enriquetecfan11/SimpleServer)](https://github.com/enriquetecfan11/SimpleServer/stargazers)
+<p>
+<div  align="center">
+🚧 SimpleIOTServer is Under construction... 🚧
+</div>
+<p align="center">
+<img  alt="Github top language"  src="https://img.shields.io/github/languages/top/enriquetecfan11/iotdashboard?color=56BEB8">
+<img  alt="Github language count"  src="https://img.shields.io/github/languages/count/enriquetecfan11/iotdashboard?color=56BEB8">
+<img  alt="Repository size"  src="https://img.shields.io/github/repo-size/enriquetecfan11/iotdashboard?color=56BEB8">
+<img alt="Github issues" src="https://img.shields.io/github/issues/enriquetecfan11/iotdashboard?color=56BEB8" />
+</p>
 
-![GitHub repo file count](https://img.shields.io/github/directory-file-count/enriquetecfan11/SimpleServer)
 
-## Tech Stack
+## :rocket: Technologies ##
 
 Node, Express and PostgreSQL Database
 
-## Contributing
+## :memo: Contributing ##
 
 This is and open source project if you want to collaborate look at issues and choose you want to collaborate 
 [![GitHub issues](https://img.shields.io/github/issues/enriquetecfan11/SimpleServer)](https://github.com/enriquetecfan11/SimpleServer/issues)
@@ -57,7 +62,9 @@ This endpoint show only the data for the id are you enter in the url
 ```
 This endpoint route deletes a sensor there are in the database
 
-##  Quick Start
+## :checkered_flag: Starting ##
+
+###  Quick Start
 
 In order to start testing the server, you must follow these steps:
 
@@ -80,7 +87,7 @@ Start Server Developer Mode:
 ```console
 $ npm run dev
 ```
-## Quick With Docker
+### Quick With Docker
 This server is ready for use with docker, but you use 2 docker container one the server and another for the PostgreSQL Database:
 
 First create the docker simple-server:
@@ -89,7 +96,6 @@ First create the docker simple-server:
 ```console
 docker build --tag simple-server . 
 ```
-## Author
 
-- Enrique Rodriguez Vela 
-[![twitter/enriquetecfan](http://1.gravatar.com/avatar/d31ede569956380200b718ffe7ae90cf<)](http://twitter.com/enriquetecfan "Follow @enriquetecfan on Twitter") 
+
+Made with :heart: by <a href="https://github.com/enriquetecfan11" target="_blank">Enrique Rodriguez</a>
