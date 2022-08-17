@@ -87,15 +87,6 @@ Start Server Developer Mode:
 ```console
 $ npm run dev
 ```
-### Quick With Docker
-This server is ready for use with docker, but you use 2 docker container one the server and another for the PostgreSQL Database:
-
-First create the docker simple-server:
- 
-1 - First you need to create your own image with this:
-```console
-docker build --tag simple-server . 
-```
 
 
 Made with :heart: by <a href="https://github.com/enriquetecfan11" target="_blank">Enrique Rodriguez</a>
