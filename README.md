@@ -1,11 +1,61 @@
 
+
 # Simple IOT Server
 
 A simple server made with NodeJS, Express and PostgreSQL Datab for test IOT Devices easy
 This is and open source project if you want to collaborate look at issues and choose you want to collaborate 
 
-  [![NPM Version][npm-version-image]][npm-url]
-  [![NPM Install Size][npm-install-size-image]][npm-install-size-url]
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+[![GitHub stars](https://img.shields.io/github/stars/enriquetecfan11/SimpleServer)](https://github.com/enriquetecfan11/SimpleServer/stargazers)
+
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/enriquetecfan11/SimpleServer)
+
+## Tech Stack
+
+Node, Express and PostgreSQL Database
+
+## Contributing
+
+This is and open source project if you want to collaborate look at issues and choose you want to collaborate 
+[![GitHub issues](https://img.shields.io/github/issues/enriquetecfan11/SimpleServer)](https://github.com/enriquetecfan11/SimpleServer/issues)
+
+## Routes
+
+#### Create and IOT Sensor
+
+```http
+  POST /api/sensor
+```
+This endpoint create a new sensor
+
+#### Post data form IOT Sensor
+
+```http
+  POST /api/sensores
+```
+This endpoint post the data of the sensor into the database
+
+#### Get all the data from IOT Sensor
+
+```http
+  GET /api/sensores
+```
+This endpoint shows all the data of post sensores
+
+#### Get data from sensor by ID
+
+```http
+  GET /api/sensores/:id
+```
+This endpoint show only the data for the id are you enter in the url
+
+#### Delete a sensor by ID
+
+```http
+  DELETE /api/sensores/:id
+```
+This endpoint route deletes a sensor there are in the database
 
 ##  Quick Start
 
@@ -39,35 +89,7 @@ First create the docker simple-server:
 ```console
 docker build --tag simple-server . 
 ```
-  
-
-2 - Then you need to run this command for start the container:
-```
-sudo docker run -d -p 3000:3000 --name simple-server simple-server
-```
-
-3 - If you want to view the console.log of the container use this:
-
-```
-sudo docker logs -f <ContainerName>
-```
-Second create docker PostgreSQL Database:
-
-docker run --name postgres -e POSTGRES_PASSWORD=yourpassword -p 5432:5432 -d postgres
-
-> Default DB is postgres
-
-
-## Server Routes 
--   Post Sensor -> This route creates a sensor in the database
--   Post Sensores ->  This route post the data of the sensor into the database 
--   Get Sensors -> This route shows all the data of post sensores
--   Get Sensors by ID -> This route show only the data for the id are you enter in the url
--   Delete Sensors by ID -> This route deletes a sensor
-
-Example Url: `http://localhost:4000/api/sensores`
-
 ## Author
 
+- Enrique Rodriguez Vela 
 [![twitter/enriquetecfan](http://1.gravatar.com/avatar/d31ede569956380200b718ffe7ae90cf<)](http://twitter.com/enriquetecfan "Follow @enriquetecfan on Twitter") 
-
