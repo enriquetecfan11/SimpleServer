@@ -6,7 +6,6 @@ This is and open source project if you want to collaborate look at issues and ch
 
   [![NPM Version][npm-version-image]][npm-url]
   [![NPM Install Size][npm-install-size-image]][npm-install-size-url]
-  [![NPM Downloads][npm-downloads-image]][npm-downloads-url]+
 
 ##  Quick Start
 
