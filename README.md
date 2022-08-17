@@ -8,11 +8,12 @@ A simple server made with NodeJS, Express and PostgreSQL Datab for test IOT Devi
 <div  align="center">
 🚧 SimpleIOTServer is Under construction... 🚧
 </div>
+<br />
 <p align="center">
-<img  alt="Github top language"  src="https://img.shields.io/github/languages/top/enriquetecfan11/iotdashboard?color=56BEB8">
-<img  alt="Github language count"  src="https://img.shields.io/github/languages/count/enriquetecfan11/iotdashboard?color=56BEB8">
-<img  alt="Repository size"  src="https://img.shields.io/github/repo-size/enriquetecfan11/iotdashboard?color=56BEB8">
-<img alt="Github issues" src="https://img.shields.io/github/issues/enriquetecfan11/iotdashboard?color=56BEB8" />
+<img  alt="Github top language"  src="https://img.shields.io/github/languages/top/enriquetecfan11/SimpleServer?color=56BEB8">
+<img  alt="Github language count"  src="https://img.shields.io/github/languages/count/enriquetecfan11/SimpleServer?color=56BEB8">
+<img  alt="Repository size"  src="https://img.shields.io/github/repo-size/enriquetecfan11/SimpleServer?color=56BEB8">
+<img alt="Github issues" src="https://img.shields.io/github/issues/enriquetecfan11/SimpleServer?color=56BEB8" />
 </p>
 
 
@@ -23,7 +24,6 @@ Node, Express and PostgreSQL Database
 ## :memo: Contributing ##
 
 This is and open source project if you want to collaborate look at issues and choose you want to collaborate 
-[![GitHub issues](https://img.shields.io/github/issues/enriquetecfan11/SimpleServer)](https://github.com/enriquetecfan11/SimpleServer/issues)
 
 ## Routes
 
