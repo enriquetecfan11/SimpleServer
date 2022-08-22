@@ -18,6 +18,23 @@ app.use('/api', ApiRoutes);
 const morgan = require('morgan');
 app.use(morgan('dev'));
 
+// DB Options
+const db = require('./app/models');
+
+db.sequelize.sync()
+    .then(() => {
+        console.log("Successfully connected to the database");
+    })
+    .catch((err) => {
+        console.log("Failed to sync db: " + err.message);
+    });
+
+// drop the table if it already exists
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
+
+
 
 // Start server
 var port = process.env.PORT || 4000;

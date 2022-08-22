@@ -1,8 +1,8 @@
-const user = 'postgres'
-const host = 'host.docker.internal'
+const user = 'admin'
+const host = '192.168.1.44'
 const database = 'postgres'
-const password = 'postgrespw'
-const port = '49153'
+const password = 'mondejar'
+const port = '5432'
 
 module.exports = {
     HOST: host,
