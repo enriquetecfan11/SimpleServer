@@ -7,6 +7,8 @@ router.post('/sensores', ApiController.postSensores);
 
 router.post('/sensor', ApiController.postSensor);
 
+router.get('/sensor', ApiController.getSensor);
+
 router.get('/sensores', ApiController.getSensores);
 
 router.get('/sensores/:id', ApiController.getSensoresByID);

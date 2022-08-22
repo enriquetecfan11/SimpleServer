@@ -68,6 +68,14 @@ const postSensor = (req, res) => {
 
 }
 
+const getSensor = (req, res) => {
+    Sensores.findAll().then(sensores => {
+        res.status(200).json(sensores);
+    }).catch(err => {
+        res.sendStatus(500);
+    });   
+}
+
 const getSensores = (req, res) => {
     Pruebas.findAll().then(sensores => {
         res.status(200).json(sensores);
@@ -167,5 +175,6 @@ module.exports = {
     getSensoresByID,
     deleteSensorById,
     postMedidas,
-    getMedidas
+    getMedidas,
+    getSensor
 }
