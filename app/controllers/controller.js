@@ -145,7 +145,7 @@ const postMedidas = (req, res) => {
         res.status(201).json(medida);
     }
     ).catch(err => {
-        res.sendStatus(500);
+        res.sendStatus(500).json(err);
     });
 
 
