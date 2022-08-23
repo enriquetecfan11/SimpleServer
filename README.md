@@ -87,6 +87,22 @@ Start Server Developer Mode:
 ```console
 $ npm run dev
 ```
+### 🐳 Quick Start Docker
+
+If you want use this with docker:
+
+First create image:
+
+```console
+$ docker build -t simple-server .
+```
+
+Second run image:
+
+```console
+$ docker run -dp 4000:4000 getting-started.
+```
+
 
 
 Made with :heart: by <a href="https://github.com/enriquetecfan11" target="_blank">Enrique Rodriguez</a>

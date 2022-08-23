@@ -1,5 +1,5 @@
 const user = 'admin'
-const host = '192.168.1.44'
+const host = 'localhost'
 const database = 'postgres'
 const password = 'mondejar'
 const port = '5432'
