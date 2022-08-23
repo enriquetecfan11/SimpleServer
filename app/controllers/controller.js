@@ -144,18 +144,23 @@ const postMedidas = (req, res) => {
     });
 
 
+    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+    // console.log("Received time: " + date.toLocaleTimeString() + "\n")
+    // console.log("Recieved a post request" + "\n");
+    // // console.log("Raw Request ->  ", req.body + "\n");
+    // console.log("Dispositivo: " + dispositivo + "\n");
+    // console.log("Timestamp: " + timestamp + "\n");
+    // // Timestamp to local time
+    // var fechasensor = new Date(timestamp);
+    // console.log("Timestamp Converted: " + fechasensor.toLocaleTimeString() + "\n");
+    // console.log("Temperatura: " + temperatura + "\n");
+    // console.log("Humedad: " + humedad + "\n");
+    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-    console.log("Received time: " + date.toLocaleTimeString() + "\n")
-    console.log("Recieved a post request" + "\n");
-    // console.log("Raw Request ->  ", req.body + "\n");
-    console.log("Dispositivo: " + dispositivo + "\n");
-    console.log("Timestamp: " + timestamp + "\n");
-    // Timestamp to local time
-    var fechasensor = new Date(timestamp);
-    console.log("Timestamp Converted: " + fechasensor.toLocaleTimeString() + "\n");
-    console.log("Temperatura: " + temperatura + "\n");
-    console.log("Humedad: " + humedad + "\n");
+    console.log("Raw Request ->  ", req.body + "\n");
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+
 }
 
 const getMedidas = (req, res) => {
