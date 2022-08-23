@@ -130,6 +130,9 @@ const postMedidas = (req, res) => {
     var temperatura = req.body.temperatura;
     var humedad = req.body.humedad;
 
+    // Pass req.body to JSON
+    var data = JSON.stringify(req.body);
+
     // Insert into database
     Medidas.create({
         dispositivo: dispositivo,
@@ -158,7 +161,7 @@ const postMedidas = (req, res) => {
     // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
 
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-    console.log("Raw Request ->  ", req.body + "\n");
+    console.log("Raw Request ->  ", data + "\n");
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
 
 }
