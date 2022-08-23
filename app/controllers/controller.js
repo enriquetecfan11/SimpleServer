@@ -161,6 +161,7 @@ const postMedidas = (req, res) => {
     // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
 
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+     console.log("Received time: " + date.toLocaleTimeString() + "\n")
     console.log("Raw Request ->  ", data + "\n");
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
 
