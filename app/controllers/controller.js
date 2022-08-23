@@ -129,7 +129,6 @@ const postMedidas = (req, res) => {
     var timestamp = req.body.timestamp;
     var temperatura = req.body.temperatura;
     var humedad = req.body.humedad;
-    var wifirrsi = req.body.wifirrsi;
 
     // Pass req.body to JSON
     var data = JSON.stringify(req.body);
@@ -139,8 +138,7 @@ const postMedidas = (req, res) => {
         dispositivo: dispositivo,
         timestamp: timestamp,
         temperatura: temperatura,
-        humedad: humedad,
-        wifirrsi: wifirrsi,
+        humedad: humedad
     }).then(medida => {
         res.status(201).json(medida);
     }
