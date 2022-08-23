@@ -129,6 +129,7 @@ const postMedidas = (req, res) => {
     var timestamp = req.body.timestamp;
     var temperatura = req.body.temperatura;
     var humedad = req.body.humedad;
+    var wifirrsi = req.body.wifirrsi;
 
     // Pass req.body to JSON
     var data = JSON.stringify(req.body);
@@ -138,7 +139,8 @@ const postMedidas = (req, res) => {
         dispositivo: dispositivo,
         timestamp: timestamp,
         temperatura: temperatura,
-        humedad: humedad
+        humedad: humedad,
+        wifirrsi: wifirrsi,
     }).then(medida => {
         res.status(201).json(medida);
     }
@@ -146,19 +148,6 @@ const postMedidas = (req, res) => {
         res.sendStatus(500);
     });
 
-
-    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-    // console.log("Received time: " + date.toLocaleTimeString() + "\n")
-    // console.log("Recieved a post request" + "\n");
-    // // console.log("Raw Request ->  ", req.body + "\n");
-    // console.log("Dispositivo: " + dispositivo + "\n");
-    // console.log("Timestamp: " + timestamp + "\n");
-    // // Timestamp to local time
-    // var fechasensor = new Date(timestamp);
-    // console.log("Timestamp Converted: " + fechasensor.toLocaleTimeString() + "\n");
-    // console.log("Temperatura: " + temperatura + "\n");
-    // console.log("Humedad: " + humedad + "\n");
-    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
 
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
      console.log("Received time: " + date.toLocaleTimeString() + "\n")
