@@ -34,7 +34,7 @@ db.sequelize.sync()
 
 /*
     Windows = $env:NODE_ENV = 'development'
-    Linux && Mac = NODE_ENV=development node server.js
+    Linux && Mac = export NODE_ENV=development
     then run: npm start to use development environment
 */
 
@@ -45,6 +45,11 @@ if (environment === 'development') {
         console.log('Drop and Resync with { force: true }');
     })
 }
+
+if(environment === 'production') {
+    db.sequelize.sync();
+}
+
 
 
 
