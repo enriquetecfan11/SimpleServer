@@ -125,7 +125,7 @@ const deleteSensorById = (req, res) => {
 const postMedidas = (req, res) => {
     var date = new Date();
 
-    var dispositivo = req.body.dispositivo;
+    var device = req.body.device;
     var timestamp = req.body.timestamp;
     var temperatura = req.body.temperatura;
     var humedad = req.body.humedad;
@@ -140,16 +140,9 @@ const postMedidas = (req, res) => {
     console.log("Raw Request ->  ", data + "\n");
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
 
-    // console.log("Dispositivo: " + dispositivo + "\n");
-    // console.log("Timestamp: " + timestamp + "\n");
-    // console.log("Temperatura: " + temperatura + "\n");
-    // console.log("Humedad: " + humedad + "\n");
-    // console.log("WifiRSSI: " + wifirrsi + "\n");
-    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-
     // Data to be saved in the database
     const medidas_prueba = {
-        dispositivo: dispositivo,
+        device: device,
         timestamp: timestamp,
         temperatura: temperatura,
         humedad: humedad,

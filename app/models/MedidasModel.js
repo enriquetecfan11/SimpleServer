@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
             autoIncrement: true,
         },
-        dispositivo: {
+        device: {
             type: Sequelize.STRING,
             allowNull: false
         },
@@ -15,15 +15,15 @@ module.exports = (sequelize, Sequelize) => {
         },
         temperatura: {
             type: Sequelize.FLOAT,
-            allowNull: false
+            allowNull: true
         },
         humedad: {
             type: Sequelize.FLOAT,
-            allowNull: false
+            allowNull: true
         },
         wifirrsi: {
             type: Sequelize.FLOAT,
-            allowNull: false
+            allowNull: true
         }
     },
         {
