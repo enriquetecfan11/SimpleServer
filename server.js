@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+require('dotenv').config();
 
 
 // Express Options
@@ -29,11 +30,21 @@ db.sequelize.sync()
         console.log("Failed to sync db: " + err.message);
     });
 
-// drop the table if it already exists
 
-db.sequelize.sync({ force: true }).then(() => {
-   console.log("Drop and re-sync db.");
-});
+
+/*
+    Windows = $env:NODE_ENV = 'development'
+    Linux && Mac = NODE_ENV=development node server.js
+    then run: npm start to use development environment
+*/
+
+
+var environment = process.env.NODE_ENV;
+if (environment === 'development') {
+    db.sequelize.sync({ force: true }).then(() => {
+        console.log('Drop and Resync with { force: true }');
+    })
+}
 
 
 
@@ -42,6 +53,7 @@ var port = process.env.PORT || 4000;
 
 app.listen(port, () => {
     console.log(`🚀 Server started on port ${port}`);
+    console.log(`👷‍♂️ Environment: ${process.env.NODE_ENV}`);
 }).on('error', err => {
     console.log(err);
 });

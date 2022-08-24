@@ -127,10 +127,15 @@ const postMedidas = (req, res) => {
 
     var device = req.body.device;
     var timestamp = req.body.timestamp;
-    var temperatura = req.body.temperatura;
-    var humedad = req.body.humedad;
+    var temp = req.body.temp;
+    var humidity = req.body.humidity;
+    var rain = req.body.rain;
+    var windspeed = req.body.windspeed;
+    var winddirection = req.body.winddirection;
+    var pluviometer = req.body.pluviometer;
     var wifirrsi = req.body.wifirrsi;
 
+    
     // Pass req.body to JSON
     var data = JSON.stringify(req.body);
 
@@ -144,9 +149,13 @@ const postMedidas = (req, res) => {
     const medidas_prueba = {
         device: device,
         timestamp: timestamp,
-        temperatura: temperatura,
-        humedad: humedad,
-        wifirrsi: wifirrsi,
+        temp: temp,
+        humidity: humidity,
+        rain: rain,
+        windspeed: windspeed,
+        winddirection: winddirection,
+        pluviometer: pluviometer,
+        wifirssi: wifirssi,
     }
 
     Medidas.create(medidas_prueba)

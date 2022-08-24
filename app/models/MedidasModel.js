@@ -13,11 +13,27 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DATE,
             allowNull: true
         },
-        temperatura: {
+        temp: {
             type: Sequelize.FLOAT,
             allowNull: true
         },
-        humedad: {
+        humidity: {
+            type: Sequelize.FLOAT,
+            allowNull: true
+        },
+        rain:{
+            type: Sequelize.FLOAT,
+            allowNull: true
+        },
+        windspeed:{
+            type: Sequelize.FLOAT,
+            allowNull: true
+        },
+        winddirection:{
+            type: Sequelize.FLOAT,
+            allowNull: true
+        },
+        pluviometer:{
             type: Sequelize.FLOAT,
             allowNull: true
         },
