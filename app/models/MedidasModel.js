@@ -37,7 +37,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.FLOAT,
             allowNull: true
         },
-        wifirrsi: {
+        wifiRssi: {
             type: Sequelize.FLOAT,
             allowNull: true
         }

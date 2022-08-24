@@ -160,7 +160,7 @@ const postMedidas = (req, res) => {
         windspeed: windspeed,
         winddirection: winddirection,
         pluviometer: pluviometer,
-        wifirssi: wifirrsi,
+        wifiRssi: wifirrsi,
     }
 
     Medidas.create(medidas_prueba)
