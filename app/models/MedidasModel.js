@@ -7,11 +7,11 @@ module.exports = (sequelize, Sequelize) => {
         },
         device: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: true
         },
         timestamp: {
             type: Sequelize.DATE,
-            allowNull: false
+            allowNull: true
         },
         temperatura: {
             type: Sequelize.FLOAT,
