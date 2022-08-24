@@ -23,13 +23,12 @@ app.use(morgan('dev'));
 const db = require('./app/models');
 
 db.sequelize.sync()
-    .then(() => {
-        console.log("Successfully connected to the database");
-    })
-    .catch((err) => {
-        console.log("Failed to sync db: " + err.message);
-    });
-
+.then(() => {
+    console.log("✅ Successfully connected to the database");
+})
+.catch((err) => {
+    console.log("Failed to sync db: " + err.message);
+});
 
 
 /*
@@ -40,6 +39,7 @@ db.sequelize.sync()
 
 
 var environment = process.env.NODE_ENV;
+
 if (environment === 'development') {
     db.sequelize.sync({ force: true }).then(() => {
         console.log('Drop and Resync with { force: true }');
@@ -49,8 +49,6 @@ if (environment === 'development') {
 if(environment === 'production') {
     db.sequelize.sync();
 }
-
-
 
 
 // Start server
