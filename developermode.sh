@@ -11,9 +11,10 @@ echo "We set the environment variable"
 export NODE_ENV=development
 
 sleep 2
-echo "We start the server"
-node server.js
 
-echo "We are done 🎉"
+echo "Send Ctrl+C to stop the server"
+kill -INT 888
+
+echo "We are done 🎉, exiting"  
 
 exit 0
