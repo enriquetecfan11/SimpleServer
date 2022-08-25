@@ -2,22 +2,20 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 require('dotenv').config();
+// Morgan Options
+const morgan = require('morgan');
 
 
 // Express Options
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(morgan('tiny'));
 
 // Express Routes
 const ApiRoutes = require('./app/routes/routes.js');
 app.use('/api', ApiRoutes);
 
-
-
-// Morgan Options
-const morgan = require('morgan');
-app.use(morgan('tiny'));
 
 // DB Options
 const db = require('./app/models');
