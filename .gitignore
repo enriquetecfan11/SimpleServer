@@ -12,3 +12,6 @@ node_modules/
 
 # ignore package-lock.json
 package-lock.json
+
+# ignore .env
+.env/

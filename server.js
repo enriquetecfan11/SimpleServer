@@ -17,7 +17,7 @@ app.use('/api', ApiRoutes);
 
 // Morgan Options
 const morgan = require('morgan');
-app.use(morgan('dev'));
+app.use(morgan('tiny'));
 
 // DB Options
 const db = require('./app/models');
