@@ -10,3 +10,5 @@ echo "We start the server"
 node server.js
 
 echo "We are done 🎉"
+
+exit 0
