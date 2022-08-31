@@ -12,8 +12,8 @@ export NODE_ENV=development
 
 sleep 2
 
-echo "Send Ctrl+C to stop the server"
-kill -INT 888
+# echo "Send Ctrl+C to stop the server"
+# kill -INT 888
 
 echo "We are done 🎉, exiting"  
 

@@ -9,6 +9,10 @@ sleep 2
 echo "We start the server"
 node server.js
 
-echo "We are done 🎉"
+sleep 2
+
+echo "Send Ctrl+C to stop the server"
+
+echo "We are done 🎉, exiting"  
 
 exit 0

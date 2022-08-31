@@ -125,22 +125,49 @@ const deleteSensorById = (req, res) => {
 const postMedidas = (req, res) => {
     var date = new Date();
 
-    var device = req.body.device;
-    var temp = req.body.temp;
-    var humidity = req.body.humidity;
+    var device = req.body.dispositivo;
+    var hora = req.body.hora;
+    var temp = req.body.temperatura;
+    var humidity = req.body.humedadAire;
     var rain = req.body.rain;
-    var windspeed = req.body.windspeed;
-    var winddirection = req.body.winddirection;
-    var pluviometer = req.body.pluviometer;
+    var windspeed = req.body.wind;
+    var winddirection = req.body.dirWind;
+    var luxes = req.body.luxes;
     var wifirrsi = req.body.wifirrsi;
-    
+
+
+
+    // Convert wind direction to letters
+    if (winddirection >= 0 && winddirection < 22.5) {
+        winddirection = "N";
+    } else if (winddirection >= 22.5 && winddirection < 67.5) {
+        winddirection = "NE";
+    } else if (winddirection >= 67.5 && winddirection < 112.5) {
+        winddirection = "E";
+    } else if (winddirection >= 112.5 && winddirection < 157.5) {
+        winddirection = "SE";
+    } else if (winddirection >= 157.5 && winddirection < 202.5) {
+        winddirection = "S";
+    } else if (winddirection >= 202.5 && winddirection < 247.5) {
+        winddirection = "SW";
+    } else if (winddirection >= 247.5 && winddirection < 292.5) {
+        winddirection = "W";
+    } else if (winddirection >= 292.5 && winddirection < 337.5) {
+        winddirection = "NW";
+    } else if (winddirection >= 337.5 && winddirection < 360) {
+        winddirection = "N";
+    } else {
+        winddirection = "";
+    }
+
+
     var timestamp = req.body.timestamp;
 
-    if(!timestamp || timestamp == 0){
+    if (!timestamp || timestamp == 0) {
         timestamp = date.getTime();
     }
 
-    
+
     // Pass req.body to JSON
     var data = JSON.stringify(req.body);
 
@@ -148,30 +175,53 @@ const postMedidas = (req, res) => {
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
     console.log("Received time: " + date.toLocaleTimeString() + "\n")
     console.log("Raw Request ->  ", data + "\n");
+    console.log("Wind direction: " + winddirection + "\n");
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
+    
+    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
+    // console.log("Device: " + device + "\n");
+    // console.log("Temperature: " + temp + "\n");
+    // console.log("Humidity: " + humidity + "\n");
+    // console.log("Rain: " + rain + "\n");
+    // console.log("Windspeed: " + windspeed + "\n");
+    // console.log("Winddirection: " + winddirection + "\n");
+    // console.log("WinDirection Real : " + discretizeWind(winddirection) + "\n");
+    // console.log("Luxes: " + luxes + "\n");
+    // console.log("Wifirrsi: " + wifirrsi + "\n");
+    // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
+
+
+    res.status(200).json(req.body);
 
     // Data to be saved in the database
+    /*
     const medidas_prueba = {
-        device: device,
-        timestamp: timestamp,
-        temp: temp,
-        humidity: humidity,
+        dispositivo: device,
+        hora: hora,
+        temperatura: temp,
+        humedadAire: humidity,
         rain: rain,
-        windspeed: windspeed,
-        winddirection: winddirection,
-        pluviometer: pluviometer,
-        wifiRssi: wifirrsi,
-    }
-
+        wind: windspeed,
+        dirWind: winddirection,
+        luxes: luxes,
+        wifirrsi: wifirrsi,
+        }
+    */
+        
+    // Save Medidas in the database
+    /*
     Medidas.create(medidas_prueba)
         .then(data => {
             res.send(data);
-        }).catch(err => {
+        }
+        ).catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while creating the Sensor."
+                message: err.message || "Some error occurred while creating the Medidas."
             });
-            console.log(err);
         });
+    */
+
+    
 
 
 }

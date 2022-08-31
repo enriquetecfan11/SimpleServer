@@ -5,19 +5,19 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
             autoIncrement: true,
         },
-        device: {
+        dispositivo: {
             type: Sequelize.STRING,
             allowNull: true
         },
-        timestamp: {
+        hora: {
             type: Sequelize.DATE,
             allowNull: true
         },
-        temp: {
+        temperatura: {
             type: Sequelize.FLOAT,
             allowNull: true
         },
-        humidity: {
+        humedadAire: {
             type: Sequelize.FLOAT,
             allowNull: true
         },
@@ -25,15 +25,15 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.FLOAT,
             allowNull: true
         },
-        windspeed:{
+        wind:{
             type: Sequelize.FLOAT,
             allowNull: true
         },
-        winddirection:{
+        dirWind:{
             type: Sequelize.FLOAT,
             allowNull: true
         },
-        pluviometer:{
+        luxes:{
             type: Sequelize.FLOAT,
             allowNull: true
         },
