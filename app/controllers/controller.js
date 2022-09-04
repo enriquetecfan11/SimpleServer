@@ -124,6 +124,8 @@ const deleteSensorById = (req, res) => {
 
 const postMedidas = (req, res) => {
     var date = new Date();
+    var timeString = date.toLocaleTimeString();
+    
 
     var device = req.body.dispositivo;
     var hora = req.body.hora;
@@ -134,31 +136,6 @@ const postMedidas = (req, res) => {
     var winddirection = req.body.dirWind;
     var luxes = req.body.luxes;
     var wifirrsi = req.body.wifiRssi;
-
-
-
-    // Convert wind direction to letters
-    // if (winddirection >= 0 && winddirection < 22.5) {
-    //     winddirection = "N";
-    // } else if (winddirection >= 22.5 && winddirection < 67.5) {
-    //     winddirection = "NE";
-    // } else if (winddirection >= 67.5 && winddirection < 112.5) {
-    //     winddirection = "E";
-    // } else if (winddirection >= 112.5 && winddirection < 157.5) {
-    //     winddirection = "SE";
-    // } else if (winddirection >= 157.5 && winddirection < 202.5) {
-    //     winddirection = "S";
-    // } else if (winddirection >= 202.5 && winddirection < 247.5) {
-    //     winddirection = "SW";
-    // } else if (winddirection >= 247.5 && winddirection < 292.5) {
-    //     winddirection = "W";
-    // } else if (winddirection >= 292.5 && winddirection < 337.5) {
-    //     winddirection = "NW";
-    // } else if (winddirection >= 337.5 && winddirection < 360) {
-    //     winddirection = "N";
-    // } else {
-    //     winddirection = "";
-    // }
 
 
     var timestamp = req.body.timestamp;
@@ -177,6 +154,7 @@ const postMedidas = (req, res) => {
     console.log("Raw Request ->  ", data + "\n");
     console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
     console.log("Device: " + device + "\n");
+    console.log("Device send time -> " + hora + "\n");
     console.log("Temperature: " + temp + "\n");
     console.log("Humidity: " + humidity + "\n");
     console.log("Rain: " + rain + "\n");
@@ -193,7 +171,7 @@ const postMedidas = (req, res) => {
     
     const medidas_prueba = {
         dispositivo: device,
-        hora: hora,
+        hora: timeString,
         temperatura: temp,
         humedadAire: humidity,
         rain: rain,
