@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 require('dotenv').config();
+
+
 // Morgan Options
 const morgan = require('morgan');
 
@@ -36,17 +38,17 @@ app.use('/api', ApiRoutes);
 */
 
 
-var environment = process.env.NODE_ENV;
+// var environment = process.env.NODE_ENV;
 
-if (environment === 'development') {
-  db.sequelize.sync({ force: true }).then(() => {
-    console.log('Drop and Resync with { force: true }');
-  })
-}
+// if (environment === 'development') {
+//   db.sequelize.sync({ force: true }).then(() => {
+//     console.log('Drop and Resync with { force: true }');
+//   })
+// }
 
-if (environment === 'production') {
-  db.sequelize.sync();
-}
+// if (environment === 'production') {
+//   db.sequelize.sync();
+// }
 
 
 // Start server
@@ -54,7 +56,7 @@ var port = process.env.PORT || 4000;
 
 app.listen(port, () => {
   console.log(`🚀 Server started on port ${port}`);
-  console.log(`👷‍♂️ Environment: ${process.env.NODE_ENV}`);
+  // console.log(`👷‍♂️ Environment: ${process.env.NODE_ENV}`);
 }).on('error', err => {
   console.log(err);
 });
