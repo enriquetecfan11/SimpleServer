@@ -1,13 +1,11 @@
 <h1  align="center">Simple IOT Server</h1>
 <p  align="center">
 A simple server made with NodeJS, Express and PostgreSQL Datab for test IOT Devices easy
+
+The server have two branches the main is for live development with database settings for connect to PostgreSQL Database
+and the local brach for testing devices in local enviroment without db
 <p>
 
-
-<p>
-<div  align="center">
-🚧 SimpleIOTServer is Under construction... 🚧
-</div>
 <br />
 <p align="center">
 <img  alt="Github top language"  src="https://img.shields.io/github/languages/top/enriquetecfan11/SimpleServer?color=56BEB8">
@@ -23,7 +21,7 @@ Node, Express and PostgreSQL Database
 
 ## :memo: Contributing ##
 
-This is and open source project if you want to collaborate look at issues and choose you want to collaborate 
+This is and open source project if you want to collaborate look at issues and choose you want to collaborate
 
 ## Routes
 
