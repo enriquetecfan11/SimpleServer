@@ -7,7 +7,8 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "start:dev": "node NODE_ENV server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clusters": "npm run clusters.js"
   },
   "author": "",
   "license": "ISC",
