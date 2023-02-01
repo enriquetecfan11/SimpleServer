@@ -5,25 +5,15 @@ const router = express.Router();
 // Todas las medidas
 router.post('/medidas', ApiController.postMedidas);
 
-// Estación de temperatura - Todo Endpoint
-router.get('/temperatura', ApiController.estacion);
+// Solo la estacion de temperatura
+router.post('/estacion', ApiController.postEstacion);
 
-// Temperatura suelo a 2 niveles - Todo Endpoint
-router.get('/temperatura1', ApiController.temperaturaSuelo);
+// Dos sondas de suelo + temperatura y humedad ambiente
+router.post('/temperaturaSuelo', ApiController.postTemperaturaSuelo);
 
-// Temperatura y humedad 2 niveles -  Todo Endpoint
-router.get('/temperatura2', ApiController.temperaturaHumedad);
+// Dos sondas de temperatura y humedad ambiente
+router.post('/temperaturaDos', ApiController.postTemperaturaDos);
 
-
-
-// Create this endpoint get /hello
-router.get('/hello', (req, res) => {
-  res.status(200).json(
-    {
-      "message": "Hello World"
-    }
-  )
-});
 
 
 module.exports = router;

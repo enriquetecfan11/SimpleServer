@@ -1,6 +1,6 @@
 {
   "name": "iotserver",
-  "version": "1.1.0",
+  "version": "1.5.0",
   "description": "A server to test IOT WiFi devices",
   "main": "app.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "dev": "nodemon server.js",
     "start:dev": "node NODE_ENV server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clusters": "npm run clusters.js"
+    // "clusters": "npm run clusters.js"
   },
   "author": "",
   "license": "ISC",
