@@ -14,8 +14,8 @@ const postMedidas = (req, res) => {
   var temperatura = req.body.temperatura; // para la temp 1
   var humedad = req.body.humedadAire;
 
-  var temperatura1 = req.body.temperatura1 // para la temp 2
-  var humedad1 = req.body.humedadAire1 // para la humedad 2
+  var temperatura1 = req.body.temp1 // para la temp 2
+  var humedad1 = req.body.hum1 // para la humedad 2
 
   var data = JSON.stringify(req.body);
 
@@ -59,7 +59,7 @@ const postMedidas = (req, res) => {
   res.status(201).json(
     {
       "status": "OK",
-      "message": "Data received"
+      "data": req.body
     }
   ); // Only for local debug
 }
