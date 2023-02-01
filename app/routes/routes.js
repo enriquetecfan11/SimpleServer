@@ -14,6 +14,9 @@ router.post('/temperaturaSuelo', ApiController.postTemperaturaSuelo);
 // Dos sondas de temperatura y humedad ambiente
 router.post('/temperaturaDos', ApiController.postTemperaturaDos);
 
-
+// GET Status ok
+router.get('/status', (req, res) => {
+  res.status(200).send('OK');
+});
 
 module.exports = router;
