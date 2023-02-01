@@ -14,4 +14,5 @@ node_modules/
 package-lock.json
 
 # ignore .env
-.env/
+.env
+

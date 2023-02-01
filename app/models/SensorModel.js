@@ -15,7 +15,4 @@ module.exports = (sequelize, Sequelize) => {
         });
 
     return Sensores;
-
-
-
 }

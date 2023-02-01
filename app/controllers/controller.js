@@ -4,13 +4,17 @@ const postMedidas = (req, res) => {
 
   var device = req.body.dispositivo;
   var hora = req.body.hora;
-  var temp = req.body.temperatura;
-  var humidity = req.body.humedadAire;
-  var rain = req.body.rain;
   var windspeed = req.body.wind;
   var winddirection = req.body.dirWind;
   var luxes = req.body.luxes;
   var wifirrsi = req.body.wifirrsi;
+  var rain = req.body.rain;
+
+  var temperatura = req.body.temperatura; // para la temp 1
+  var humedad = req.body.humedadAire;
+
+  var temperatura1 = req.body.temperatura1 // para la temp 2
+  var humedad1 = req.body.humedadAire1 // para la humedad 2
 
   var data = JSON.stringify(req.body);
 
@@ -25,25 +29,34 @@ const postMedidas = (req, res) => {
     if (winddirection >= 292.5 && winddirection < 337.5) return "NW"
   }
 
+  // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+  // console.log("Received time: " + date.toLocaleTimeString() + "\n");
+  // console.log("Device: " + device + "\n");
+  // console.log("Device send time -> " + hora + "\n");
+  // console.log("Temperature: " + temp + "\n");
+  // console.log("Humidity: " + humidity + "\n");
+  // console.log("Rain: " + rain + "\n");
+  // console.log("Windspeed: " + windspeed + "\n");
+  // console.log("Winddirection: " + winddirection + "\n");
+  // console.log("Real Win Direction: " + discretizeWind(winddirection) + "\n");
+  // console.log("Luxes: " + luxes + "\n");
+  // console.log("Wifi RSSI: " + wifirrsi + "\n");
+  // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
+
+  // Only get 2 Temperature and Humidity Sensor
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
   console.log("Received time: " + date.toLocaleTimeString() + "\n");
   console.log("Device: " + device + "\n");
-  console.log("Device send time -> " + hora + "\n");
-  console.log("Temperature: " + temp + "\n");
-  console.log("Humidity: " + humidity + "\n");
-  console.log("Rain: " + rain + "\n");
-  console.log("Windspeed: " + windspeed + "\n");
-  console.log("Winddirection: " + winddirection + "\n");
-  console.log("Real Win Direction: " + discretizeWind(winddirection) + "\n");
-  console.log("Luxes: " + luxes + "\n");
-  console.log("Wifi RSSI: " + wifirrsi + "\n");
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
+  console.log("Temperatura-1: " + temperatura);
+  console.log("Temperatura-2: " + temperatura1);
+  console.log("Humedad-1: " + humedad);
+  console.log("Humedad-2: " + humedad1);
+  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
 
 
-  res.status(200).json(req.body); // Only for local debug
+
+  res.status(201).json(req.body); // Only for local debug
 }
-
-
 
 module.exports = {
   postMedidas
