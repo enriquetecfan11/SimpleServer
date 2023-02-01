@@ -56,7 +56,12 @@ const postMedidas = (req, res) => {
 
 
 
-  res.status(201).json(req.body); // Only for local debug
+  res.status(201).json(
+    {
+      "status": "OK",
+      "message": "Data received"
+    }
+  ); // Only for local debug
 }
 
 // Solo la estacion de temperatura
