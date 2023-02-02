@@ -1,8 +1,8 @@
 const user = 'admin'
-const host = '192.168.1.100'
+const host = ''
 const database = 'postgres'
-const password = 'mondejar'
-const port = '5432'
+const password = ''
+const port = ''
 
 module.exports = {
     HOST: host,
@@ -19,4 +19,4 @@ module.exports = {
       idle: 10000
     }
   };
-  
+
