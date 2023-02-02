@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 require('dotenv').config();
+const path = require('path');
+
 
 // Morgan Options
 const morgan = require('morgan');
@@ -16,6 +18,13 @@ app.use(morgan('dev'))
 // Express Routes
 const ApiRoutes = require('./app/routes/routes.js');
 app.use('/api', ApiRoutes);
+
+// sendFile will go here
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '/index.html'));
+});
+
+
 
 // Start server
 var port = process.env.PORT || 4000;
