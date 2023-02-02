@@ -3,16 +3,15 @@ const app = express();
 const cors = require('cors');
 require('dotenv').config();
 
-
 // Morgan Options
 const morgan = require('morgan');
-
 
 // Express Options
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.use(morgan('tiny'));
+app.use(morgan('dev'))
+
 
 // Express Routes
 const ApiRoutes = require('./app/routes/routes.js');
