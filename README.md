@@ -3,21 +3,14 @@
 A simple server made with NodeJS, Express and PostgreSQL Datab for test IOT Devices easy
 
 The server have two branches the main is for live development with database settings for connect to PostgreSQL Database
-and the local brach for testing devices in local enviroment without db
 
-<p>
-
-<br />
-<p align="center">
-<img  alt="Github top language"  src="https://img.shields.io/github/languages/top/enriquetecfan11/SimpleServer?color=56BEB8">
-<img  alt="Github language count"  src="https://img.shields.io/github/languages/count/enriquetecfan11/SimpleServer?color=56BEB8">
-<img  alt="Repository size"  src="https://img.shields.io/github/repo-size/enriquetecfan11/SimpleServer?color=56BEB8">
-<img alt="Github issues" src="https://img.shields.io/github/issues/enriquetecfan11/SimpleServer?color=56BEB8" />
-</p>
+Now for local testing we are not usign the database
 
 ## 🚀 Technologies
 
-Node, Express and PostgreSQL Database
+Node JS, Express JS
+
+If you want a  databse you will use PostgreSQL Database
 
 ## 📝 Contributing
 
