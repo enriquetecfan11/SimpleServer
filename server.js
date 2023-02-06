@@ -14,7 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan('dev'))
 
-
 // Express Routes
 const ApiRoutes = require('./app/routes/routes.js');
 app.use('/api', ApiRoutes);
