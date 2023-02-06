@@ -176,4 +176,4 @@ Second run image:
 $ docker run -dp 4000:4000 getting-started.
 ```
 
-Made with ❤️ by `<a href="https://github.com/enriquetecfan11" target="_blank">`Enrique Rodriguez `</a>`
+Made with ❤️ by Enrique Rodriguez Vela
