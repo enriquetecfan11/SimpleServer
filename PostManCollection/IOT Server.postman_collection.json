@@ -1,0 +1,339 @@
+{
+	"info": {
+		"_postman_id": "64cf8ddb-2a25-4d66-affb-4d9a3c22b8f1",
+		"name": "IOT Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9824494"
+	},
+	"item": [
+		{
+			"name": "Create Sensor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dispositivo\": \"ESP32 Adafruit\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.100:4000/api/sensor",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"sensor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post sensores",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\" : \"PRUEBA 01\",\r\n    \"wifiRssi\" : -80,\r\n    \"data\": \"{temperature:20,humidity:20,windSpeed:100}\",\r\n    \"rssi\": -54.9,\r\n    \"snr\": 11.5,\r\n    \"packetSize\": 50\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.37:4000/api/sensores",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"37"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"sensores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Medidas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\": \"dispositivo de prueba\",\r\n    \"timestamp\":0,\r\n    \"temp\": 70,\r\n    \"humidity\": 19,\r\n    \"rain\": 20,\r\n    \"windspeed\": 35,\r\n    \"winddirection\": 0,\r\n    \"pluviometer\": 0,\r\n    \"wifirrsi\": -65\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.100:4000/api/medidas",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"medidas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sensores -- LoRa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"device\" : \"prueba 03\",\r\n    \"wifiRssi\" : -80,\r\n    \"data\": \"{temperature:50,humidity:20,windSpeed:100}\",\r\n    \"rssi\": -54.9,\r\n    \"snr\": 11.5,\r\n    \"packetSize\": 50\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.100:4000/api/sensores",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"sensores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete One Sensor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.38:3000/api/sensores/:id",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"38"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"sensores",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Sensores",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-length": true,
+					"host": true,
+					"user-agent": true,
+					"accept": true,
+					"connection": true,
+					"accept-encoding": true,
+					"content-type": true
+				},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.100:4000/api/sensor",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"sensor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Sensor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.100:4000/api/sensores/:id",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"sensores",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Medidas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.100:4000/api/medidas",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"medidas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sensores - LoRa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.100:4000/api/sensores",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"sensores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2 Sensors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"dispositivo\": \"ESP32-1\",\r\n      \"hora\": \"2020-05-05T18:00:00\",\r\n      \"temperatura\": 25.5,\r\n      \"temperatura1\": 30,\r\n      \"humedadAire\": 50.5,\r\n      \"humedadAire1\": 60\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.38:4000/api/temperaturaDos",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"38"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"temperaturaDos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IndexHTML",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

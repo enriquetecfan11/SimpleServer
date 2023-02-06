@@ -143,6 +143,8 @@ const postTemperaturaDos = (req, res) => {
   var humedad = req.body.humedadAire;
   var temperatura1 = req.body.temp1;
   var humedad1 = req.body.hum1;
+  var temperatura2 = req.body.temp2;
+  var humedad3 = req.body.hum2;
   var data = JSON.stringify(req.body);
 
   // {"dispositivo":"ESP32-1","hora":"2020-05-05T18:00:00","temperatura":25.5,"humedadAire":50.5,"temp1":30.1,"hum1":60}
@@ -154,6 +156,8 @@ const postTemperaturaDos = (req, res) => {
   console.log("Humedad: " + humedad);
   console.log("Temperatura 1: " + temperatura1);
   console.log("Humedad 1: " + humedad1);
+  console.log("Temperatura 2: " + temperatura2);
+  console.log("Humedad 2: " + humedad3);
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-");
 
   res.status(201).json(
