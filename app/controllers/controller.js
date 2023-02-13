@@ -83,7 +83,7 @@ const postEstacion = (req, res) => {
   console.log("Received time: " + date.toLocaleTimeString() + "\n");
   console.log("Device: " + device + "\n");
   console.log("Device send time -> " + hora + "\n");
-  console.log("Temperature: " + temp + "\n");
+  console.log("Temperature: " + temperatura + "\n");
   console.log("Humidity: " + humidity + "\n");
   console.log("Rain: " + rain + "\n");
   console.log("Windspeed: " + windspeed + "\n");
