@@ -3,7 +3,6 @@ const app = express();
 const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
-import sslRedirect from 'heroku-ssl-redirect';
 
 
 // Morgan Options
@@ -14,7 +13,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan('dev'))
-app.use(sslRedirect());
+
+// Add this to package.json     "dev": "set NODE_ENV=dev&& nodemon server.js"
+// const env = process.env.NODE_ENV // test
+// if (env === 'production') {
+//   console.log("Production")
+// }else if(env == 'dev'){
+//   console.log("dev")
+// }
 
 // Express Routes
 const ApiRoutes = require('./app/routes/routes.js');
