@@ -63,9 +63,8 @@ const postEstacion = (req, res) => {
   var luxes = req.body.luxes;
   var wifirrsi = req.body.wifirrsi;
   var rain = req.body.rain;
-  var temperatura = req.body.temperatura; // para la temp 1
+  var temperatura = req.body.temperatura;
   var humedad = req.body.humedadAire;
-
   var data = JSON.stringify(req.body);
 
   const discretizeWind = winddirection => {
@@ -84,7 +83,7 @@ const postEstacion = (req, res) => {
   console.log("Device: " + device + "\n");
   console.log("Device send time -> " + hora + "\n");
   console.log("Temperature: " + temperatura + "\n");
-  console.log("Humidity: " + humidity + "\n");
+  console.log("Humidity: " + humedad + "\n");
   console.log("Rain: " + rain + "\n");
   console.log("Windspeed: " + windspeed + "\n");
   console.log("Winddirection: " + winddirection + "\n");
