@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: myapp
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      PGUSER: postgres
+      PGHOST: db
+      PGDATABASE: myapp
+      PGPASSWORD: mysecretpassword
+      PGPORT: 5432
+    depends_on:
+      - db
