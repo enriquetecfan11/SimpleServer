@@ -17,6 +17,9 @@ const postMedidas = (req, res) => {
   var temperatura1 = req.body.temp1 // para la temp 2
   var humedad1 = req.body.hum1 // para la humedad 2
 
+  var altura = req.body.altura
+  var presion = req.body.presion
+
   var data = JSON.stringify(req.body);
 
   const discretizeWind = winddirection => {
@@ -34,7 +37,7 @@ const postMedidas = (req, res) => {
   console.log("Received time: " + date.toLocaleTimeString() + "\n");
   console.log("Device: " + device + "\n");
   console.log("Device send time -> " + hora + "\n");
-  console.log("Temperature: " + temp + "\n");
+  console.log("Temperature: " + temperatura + "\n");
   console.log("Humidity: " + humidity + "\n");
   console.log("Rain: " + rain + "\n");
   console.log("Windspeed: " + windspeed + "\n");
@@ -167,9 +170,40 @@ const postTemperaturaDos = (req, res) => {
   ); // Only for local debug
 }
 
+const postestacionTemperturaDos = (req, res) => {
+  var date = new Date();
+  var timeString = date.toLocaleTimeString();
+  var device = req.body.dispositivo;
+  var hora = req.body.hora;
+
+  var temperatura = req.body.temperatura;
+  var altura = req.body.altura;
+  var presion = req.body.presion;
+  var luxes = req.body.luxes;
+
+  var data = JSON.stringify(req.body);
+
+  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+  console.log("Received time: " + date.toLocaleTimeString() + "\n");
+  console.log("Device: " + device + "\n");
+  console.log("Temperature: " + temperatura + "\n");
+  console.log("Altura: " + altura + "\n");
+  console.log("Presion: " + presion + "\n");
+  console.log("Luxes: " + luxes + "\n");
+  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
+
+  res.status(201).json(
+    {
+      "status": "OK",
+      "data": req.body
+    }
+  ); // Only for local debug
+}
+
 module.exports = {
   postMedidas,
   postEstacion,
   postTemperaturaSuelo,
-  postTemperaturaDos
+  postTemperaturaDos,
+  postestacionTemperturaDos
 }
