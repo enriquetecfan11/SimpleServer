@@ -15,7 +15,7 @@ router.post('/temperaturaSuelo', ApiController.postTemperaturaSuelo);
 router.post('/temperaturaDos', ApiController.postTemperaturaDos);
 
 // Estacion "Temperatura 2" -> Temperatura, Altura, Presion y Luxes
-router.post('/temperatura2', ApiController.postestacionTemperturaDos);
+router.post('/miniestaacion', ApiController.postestacionTemperturaDos);
 
 // GET Status ok
 router.get('/status', (req, res) => {
