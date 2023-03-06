@@ -94,9 +94,7 @@ const postdosmedidas = (req, res) => {
 }
 
 // Only temperatura, humedad, temperaturaSuelo, temperaturaSubsuelo
-
 const postdosmedidasSuelo = (req, res) => {
-
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
   console.log(`Received time: ${new Date().toLocaleTimeString()}`);
   Object.entries(req.body).forEach(([key, value]) => {
@@ -112,6 +110,8 @@ const postdosmedidasSuelo = (req, res) => {
     data: req.body,
   });
 }
+
+
 
 
 module.exports = {
