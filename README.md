@@ -1,6 +1,6 @@
 <h1  align="center">Simple IOT Server</h1>
 <p  align="center">
-A simple server made with NodeJS, Express IOT Devices easy
+A simple server made with NodeJS and Express for test IOT Devices easy
 
 The difference between Simple Sever V2 and this one is that V2 can be used with PostgreSQL databases.
 
