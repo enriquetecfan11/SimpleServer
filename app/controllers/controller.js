@@ -1,89 +1,40 @@
-// Todas las medidas
-const postMedidas = (req, res) => {
-  var date = new Date();
-  var timeString = date.toLocaleTimeString();
+const handleCommonData = (req, res) => {
+  const date = new Date();
+  const timeString = date.toLocaleTimeString();
+  const {
+    dispositivo,
+    horaDispositivo: hora,
+    wind: windspeed,
+    dirWind: winddirection,
+    luxes,
+    wifirrsi,
+    rain,
+    temperatura,
+    humedadAire: humedad,
+    temp1: temperatura1,
+    hum1: humedad1,
+    altura,
+    presion,
+  } = req.body;
 
-  var device = req.body.dispositivo;
-  var hora = req.body.hora;
-  var windspeed = req.body.wind;
-  var winddirection = req.body.dirWind;
-  var luxes = req.body.luxes;
-  var wifirrsi = req.body.wifirrsi;
-  var rain = req.body.rain;
-
-  var temperatura = req.body.temperatura; // para la temp 1
-  var humedad = req.body.humedadAire;
-
-  var temperatura1 = req.body.temp1 // para la temp 2
-  var humedad1 = req.body.hum1 // para la humedad 2
-
-  var altura = req.body.altura
-  var presion = req.body.presion
-
-  var data = JSON.stringify(req.body);
-
-  const discretizeWind = winddirection => {
-    if (winddirection >= 337.5 && winddirection < 22.5) return "N"
-    if (winddirection >= 22.5 && winddirection < 67.5) return "NE"
-    if (winddirection >= 67.5 && winddirection < 112.5) return "E"
-    if (winddirection >= 112.5 && winddirection < 157.5) return "SE"
-    if (winddirection >= 157.5 && winddirection < 202.5) return "S"
-    if (winddirection >= 202.5 && winddirection < 247.5) return "SW"
-    if (winddirection >= 247.5 && winddirection < 292.5) return "W"
-    if (winddirection >= 292.5 && winddirection < 337.5) return "NW"
-  }
-
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-  console.log("Received time: " + date.toLocaleTimeString() + "\n");
-  console.log("Device: " + device + "\n");
-  console.log("Device send time -> " + hora + "\n");
-  console.log("Temperature: " + temperatura + "\n");
-  console.log("Humidity: " + humidity + "\n");
-  console.log("Rain: " + rain + "\n");
-  console.log("Windspeed: " + windspeed + "\n");
-  console.log("Winddirection: " + winddirection + "\n");
-  console.log("Real Win Direction: " + discretizeWind(winddirection) + "\n");
-  console.log("Luxes: " + luxes + "\n");
-  console.log("Wifi RSSI: " + wifirrsi + "\n");
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
-
-  res.status(201).json(
-    {
-      "status": "OK",
-      "data": req.body
-    }
-  ); // Only for local debug
-}
-
-// Solo la estacion de temperatura
-const postEstacion = (req, res) => {
-  var date = new Date();
-  var timeString = date.toLocaleTimeString();
-  var device = req.body.dispositivo;
-  var hora = req.body.hora;
-  var windspeed = req.body.wind;
-  var winddirection = req.body.dirWind;
-  var luxes = req.body.luxes;
-  var wifirrsi = req.body.wifirrsi;
-  var rain = req.body.rain;
-  var temperatura = req.body.temperatura;
-  var humedad = req.body.humedadAire;
-  var data = JSON.stringify(req.body);
-
-  const discretizeWind = winddirection => {
-    if (winddirection >= 337.5 && winddirection < 22.5) return "N"
-    if (winddirection >= 22.5 && winddirection < 67.5) return "NE"
-    if (winddirection >= 67.5 && winddirection < 112.5) return "E"
-    if (winddirection >= 112.5 && winddirection < 157.5) return "SE"
-    if (winddirection >= 157.5 && winddirection < 202.5) return "S"
-    if (winddirection >= 202.5 && winddirection < 247.5) return "SW"
-    if (winddirection >= 247.5 && winddirection < 292.5) return "W"
-    if (winddirection >= 292.5 && winddirection < 337.5) return "NW"
-  }
+  const discretizeWind = (direction) => {
+    const directions = {
+      0: "N",
+      1: "NE",
+      2: "E",
+      3: "SE",
+      4: "S",
+      5: "SW",
+      6: "W",
+      7: "NW",
+    };
+    const sector = Math.floor(((direction % 360) / 45));
+    return directions[sector];
+  };
 
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-  console.log("Received time: " + date.toLocaleTimeString() + "\n");
-  console.log("Device: " + device + "\n");
+  console.log("Received time: " + timeString + "\n");
+  console.log("Device: " + dispositivo + "\n");
   console.log("Device send time -> " + hora + "\n");
   console.log("Temperature: " + temperatura + "\n");
   console.log("Humidity: " + humedad + "\n");
@@ -91,119 +42,81 @@ const postEstacion = (req, res) => {
   console.log("Windspeed: " + windspeed + "\n");
   console.log("Winddirection: " + winddirection + "\n");
   console.log("Real Win Direction: " + discretizeWind(winddirection) + "\n");
-  console.log("Luxes: " + luxes + "\n");
-  console.log("Wifi RSSI: " + wifirrsi + "\n");
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
 
-  res.status(201).json(
-    {
-      "status": "OK",
-      "data": req.body
-    }
-  ); // Only for local debug
-}
+  res.status(201).json({
+    status: "OK",
+    data: req.body,
+  });
+};
 
+const postMedidas = (req, res) => {
+  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+  console.log(`Received time: ${new Date().toLocaleTimeString()}`);
+  handleCommonData(req, res);
+  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+};
 
-// Dos sondas de suelo + temperatura y humedad ambiente
-const postTemperaturaSuelo = (req, res) => {
-  var date = new Date();
-  var timeString = date.toLocaleTimeString();
-  var device = req.body.dispositivo;
-  var hora = req.body.hora;
-  var temperatura = req.body.temperatura;
-  var humedad = req.body.humedad;
-  var temperaturaSuelo = req.body.Tempground;
-  var temperaturaSubsuelo = req.body.Tempburied;
-
-  var data = JSON.stringify(req.body);
+const postRawBody = (req, res) => {
 
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-  console.log("Received time: " + date.toLocaleTimeString() + "\n");
-  console.log("Device: " + device + "\n");
-  console.log("Device send time -> " + hora + "\n");
-  console.log("Temperatura: " + temperatura + "\n");
-  console.log("Humedad: " + humedad + "\n");
-  console.log("Temperatura Suelo: " + temperaturaSuelo + "\n");
-  console.log("Temperatura Subsuelo: " + temperaturaSubsuelo + "\n");
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
-
-  res.status(201).json(
-    {
-      "status": "OK",
-      "data": req.body
+  console.log(`Received time: ${new Date().toLocaleTimeString()}`);
+  Object.entries(req.body).forEach(([key, value]) => {
+    if(value != undefined){
+      console.log(key + " -> " + value);
     }
-  ); // Only for local debug
+  });
+  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+
+
+  res.status(201).json({
+    status: "OK",
+    data: req.body,
+  });
+
+};
+
+// Only temperatura, humedad, temperatura1, humedad1
+const postdosmedidas = (req, res) => {
+  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+  console.log(`Received time: ${new Date().toLocaleTimeString()}`);
+  Object.entries(req.body).forEach(([key, value]) => {
+    // Si solo tiene datos de temperatura, humedad, temperatura1, humedad1 se muestra
+    if (key == "temperatura" || key == "humedad" || key == "temperatura1" || key == "humedad1") {
+      console.log(key + " -> " + value);
+    }
+  });
+  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+
+  res.status(201).json({
+    status: "OK",
+    data: req.body,
+  });
 }
 
-// Dos sondas de temperatura y humedad ambiente
-const postTemperaturaDos = (req, res) => {
-  var date = new Date();
-  var timeString = date.toLocaleTimeString();
-  var device = req.body.dispositivo;
-  var hora = req.body.hora;
-  var temperatura = req.body.temperatura;
-  var humedad = req.body.humedadAire;
-  var temperatura1 = req.body.temp1;
-  var humedad1 = req.body.hum1;
-  var temperatura2 = req.body.temp2;
-  var humedad3 = req.body.hum2;
-  var data = JSON.stringify(req.body);
+// Only temperatura, humedad, temperaturaSuelo, temperaturaSubsuelo
 
-  // {"dispositivo":"ESP32-1","hora":"2020-05-05T18:00:00","temperatura":25.5,"humedadAire":50.5,"temp1":30.1,"hum1":60}
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-");
-  console.log("Received time: " + date.toLocaleTimeString());
-  console.log("Device: " + device);
-  console.log("Device send time -> " + hora);
-  console.log("Temperatura: " + temperatura);
-  console.log("Humedad: " + humedad);
-  console.log("Temperatura 1: " + temperatura1);
-  console.log("Humedad 1: " + humedad1);
-  console.log("Temperatura 2: " + temperatura2);
-  console.log("Humedad 2: " + humedad3);
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-");
-
-  res.status(201).json(
-    {
-      "status": "OK",
-      "data": req.body
-    }
-  ); // Only for local debug
-}
-
-const postestacionTemperturaDos = (req, res) => {
-  var date = new Date();
-  var timeString = date.toLocaleTimeString();
-  var device = req.body.dispositivo;
-  var hora = req.body.hora;
-
-  var temperatura = req.body.temperatura;
-  var altura = req.body.altura;
-  var presion = req.body.presion;
-  var luxes = req.body.luxes;
-
-  var data = JSON.stringify(req.body);
+const postdosmedidasSuelo = (req, res) => {
 
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-  console.log("Received time: " + date.toLocaleTimeString() + "\n");
-  console.log("Device: " + device + "\n");
-  console.log("Temperature: " + temperatura + "\n");
-  console.log("Altura: " + altura + "\n");
-  console.log("Presion: " + presion + "\n");
-  console.log("Luxes: " + luxes + "\n");
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-" + "\n");
-
-  res.status(201).json(
-    {
-      "status": "OK",
-      "data": req.body
+  console.log(`Received time: ${new Date().toLocaleTimeString()}`);
+  Object.entries(req.body).forEach(([key, value]) => {
+    // Si solo tiene datos de temperatura, humedad, temperaturaSuelo, temperaturaSubsuelo se muestra
+    if (key == "temperatura" || key == "humedad" || key == "temperaturaSuelo" || key == "temperaturaSubsuelo") {
+      console.log(key + " -> " + value);
     }
-  ); // Only for local debug
+  });
+  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+
+  res.status(201).json({
+    status: "OK",
+    data: req.body,
+  });
 }
+
 
 module.exports = {
   postMedidas,
-  postEstacion,
-  postTemperaturaSuelo,
-  postTemperaturaDos,
-  postestacionTemperturaDos
-}
+  postdosmedidas,
+  postRawBody,
+  postdosmedidasSuelo
+};

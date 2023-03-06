@@ -2,20 +2,18 @@ const express = require('express');
 const ApiController = require('../controllers/controller.js');
 const router = express.Router();
 
-// Todas las medidas
+// New POST MEDIDAS
 router.post('/medidas', ApiController.postMedidas);
 
-// Solo la estacion de temperatura
-router.post('/estacion', ApiController.postEstacion);
+// New POST RAW BODY
+router.post('/raw', ApiController.postRawBody);
 
-// Dos sondas de suelo + temperatura y humedad ambiente
-router.post('/temperaturaSuelo', ApiController.postTemperaturaSuelo);
+// New POST DOS MEDIDAS
+router.post('/dosmedidas', ApiController.postdosmedidas);
 
-// Dos sondas de temperatura y humedad ambiente
-router.post('/temperaturaDos', ApiController.postTemperaturaDos);
+// New POST DOS MEDIDAS SUELO
+router.post('/dosmedidassuelo', ApiController.postdosmedidasSuelo);
 
-// Estacion "Temperatura 2" -> Temperatura, Altura, Presion y Luxes
-router.post('/miniestaacion', ApiController.postestacionTemperturaDos);
 
 // GET Status ok
 router.get('/status', (req, res) => {
