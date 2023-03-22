@@ -60,8 +60,13 @@ const postRawBody = (req, res) => {
 
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
   console.log(`Received time: ${new Date().toLocaleTimeString()}`);
+
+  const timestamp = req.body.hora;
+  const fecha = new Date(timestamp * 1000);
+  console.log("Device send date: " + fecha )
+
   Object.entries(req.body).forEach(([key, value]) => {
-    if(value != undefined){
+    if (value != undefined) {
       console.log(key + " -> " + value);
     }
   });
