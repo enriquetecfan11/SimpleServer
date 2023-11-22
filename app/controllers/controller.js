@@ -34,16 +34,16 @@ const handleCommonData = (req, res) => {
     return directions[sector];
   };
 
-  // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-  // console.log("Received time: " + timeString + "\n");
-  // console.log("Device: " + dispositivo + "\n");
-  // console.log("Temperature: " + temperatura + "\n");
-  // console.log("Device send time -> " + hora + "\n");
-  // console.log("Humidity: " + humedad + "\n");
-  // console.log("Rain: " + rain + "\n");¨
-  // console.log("Windspeed: " + windspeed + "\n");
-  // console.log("Winddirection: " + winddirection + "\n");
-  // console.log("Real Win Direction: " + discretizeWind(winddirection) + "\n");
+  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+  console.log("Received time: " + timeString + "\n");
+  console.log("Device: " + dispositivo + "\n");
+  console.log("Temperature: " + temperatura + "\n");
+  console.log("Device send time -> " + hora + "\n");
+  console.log("Humidity: " + humedad + "\n");
+  console.log("Rain: " + rain + "\n");
+  console.log("Windspeed: " + windspeed + "\n");
+  console.log("Winddirection: " + winddirection + "\n");
+  console.log("Real Win Direction: " + discretizeWind(winddirection) + "\n");
 
   res.status(201).json({
     status: "OK",
@@ -72,29 +72,36 @@ const postMedidas = (req, res) => {
     timeString,
   };
 
-  console.log(data)
+  console.log(data);
 
   console.log("Device: " + data.dispositivo + "\n");
   console.log("Temperature: " + data.temperatura + "\n");
   console.log("Humidity: " + data.humedad + "\n");
   console.log("Time: " + data.timeString + "\n");
+
   fs.readFile('data.json', 'utf8', (err, fileData) => {
-    if (err) throw err;
-  
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Error reading file' });
+    }
+
     let dataArray;
     if (fileData) {
       dataArray = JSON.parse(fileData); // convert file data to JSON array
     } else {
       dataArray = []; // initialize as empty array if file is empty
     }
-  
+
     let lastId = dataArray.length > 0 ? dataArray[dataArray.length - 1].id : 0; // get last ID or 0 if array is empty
     data.id = lastId + 1; // increment ID
-  
+
     dataArray.push(data); // add new data to array
-  
+
     fs.writeFile('data.json', JSON.stringify(dataArray), (err) => {
-      if (err) throw err;
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Error writing file' });
+      }
       console.log('Data written to file');
     });
   });
@@ -152,9 +159,6 @@ const postdosmedidasSuelo = (req, res) => {
     data: req.body,
   });
 }
-
-
-
 
 module.exports = {
   postMedidas,
