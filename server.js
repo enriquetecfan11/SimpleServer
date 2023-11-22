@@ -52,7 +52,7 @@ app.get('/status', async (req, res) => {
 // }));
 
 // Start server
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 4000;
 
 app.listen(port, async () => {
   const status = await getServerStatus();
