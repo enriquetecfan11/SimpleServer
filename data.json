@@ -1,0 +1,9 @@
+[
+  {
+      "id": 1,
+      "dispositivo": "Prueba",
+      "temperatura": 0,
+      "humedad": 0,
+      "timeString": "00:00:00"
+  }
+]
