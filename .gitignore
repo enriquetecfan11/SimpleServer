@@ -15,6 +15,3 @@ package-lock.json
 
 # ignore .env
 .env
-
-# ignore data.json
-./data.json

@@ -16,9 +16,6 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Make data.json
-RUN touch data.json
-
 # Make port 4000 available for links and/or publish
 EXPOSE 4000
 
