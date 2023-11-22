@@ -13,8 +13,11 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Make port 3000 available outside the container
-EXPOSE 3000
+# Make data.json
+RUN touch data.json
 
-# Define the command to run the application
-CMD [ "node", "server.js" ]
+# Make port 4000 available for links and/or publish
+EXPOSE 4000
+
+# Run npm start when the container launches
+CMD ["npm", "start"]
