@@ -41,31 +41,18 @@ app.get('/status', async (req, res) => {
   res.json(status);
 });
 
-// Server LOGS config
-log4js.configure({
-  appenders: {
-    out: { type: 'stdout' },
-    app: { type: 'file', filename: 'application.log' }
-  },
-  categories: {
-    default: { appenders: ['out', 'app'], level: 'debug' }
-  }
-});
-
-// create a write stream (in append mode)
-const accessLogStream = fs.createWriteStream(path.join('./logs', 'access.log'), { flags: 'a' })
 
 // setup the logger with chalk
-app.use(morgan('combined', {
-  stream: {
-    write: str => {
-      console.log(logger.info(str));
-    }
-  }
-}));
+// app.use(morgan('combined', {
+//   stream: {
+//     write: str => {
+//       console.log(logger.info(str));
+//     }
+//   }
+// }));
 
 // Start server
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8000;
 
 app.listen(port, async () => {
   const status = await getServerStatus();

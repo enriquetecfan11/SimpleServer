@@ -20,4 +20,10 @@ router.get('/status', (req, res) => {
   res.status(200).send('OK');
 });
 
+// Read data from data.json and send it
+router.get('/medidas', (req, res) => {
+  const data = require('../../data.json');
+  res.status(200).json(data);
+});
+
 module.exports = router;

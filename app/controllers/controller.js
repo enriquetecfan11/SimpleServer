@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const handleCommonData = (req, res) => {
   const date = new Date();
   const timeString = date.toLocaleTimeString();
@@ -32,16 +34,16 @@ const handleCommonData = (req, res) => {
     return directions[sector];
   };
 
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-  console.log("Received time: " + timeString + "\n");
-  console.log("Device: " + dispositivo + "\n");
-  console.log("Device send time -> " + hora + "\n");
-  console.log("Temperature: " + temperatura + "\n");
-  console.log("Humidity: " + humedad + "\n");
-  console.log("Rain: " + rain + "\n");
-  console.log("Windspeed: " + windspeed + "\n");
-  console.log("Winddirection: " + winddirection + "\n");
-  console.log("Real Win Direction: " + discretizeWind(winddirection) + "\n");
+  // console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+  // console.log("Received time: " + timeString + "\n");
+  // console.log("Device: " + dispositivo + "\n");
+  // console.log("Temperature: " + temperatura + "\n");
+  // console.log("Device send time -> " + hora + "\n");
+  // console.log("Humidity: " + humedad + "\n");
+  // console.log("Rain: " + rain + "\n");¨
+  // console.log("Windspeed: " + windspeed + "\n");
+  // console.log("Winddirection: " + winddirection + "\n");
+  // console.log("Real Win Direction: " + discretizeWind(winddirection) + "\n");
 
   res.status(201).json({
     status: "OK",
@@ -53,23 +55,58 @@ const postMedidas = (req, res) => {
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
   console.log(`Received time: ${new Date().toLocaleTimeString()}`);
   handleCommonData(req, res);
+
+  // Get data from handelCommonData and save it to a file called data.json
+  const date = new Date();
+  const timeString = date.toLocaleTimeString();
+  const {
+    dispositivo,
+    temperatura,
+    humedad,
+  } = req.body;
+
+  let data = {
+    dispositivo,
+    temperatura,
+    humedad,
+    timeString,
+  };
+
+  console.log(data)
+
+  console.log("Device: " + data.dispositivo + "\n");
+  console.log("Temperature: " + data.temperatura + "\n");
+  console.log("Humidity: " + data.humedad + "\n");
+  console.log("Time: " + data.timeString + "\n");
+  fs.readFile('data.json', 'utf8', (err, fileData) => {
+    if (err) throw err;
+  
+    let dataArray;
+    if (fileData) {
+      dataArray = JSON.parse(fileData); // convert file data to JSON array
+    } else {
+      dataArray = []; // initialize as empty array if file is empty
+    }
+  
+    let lastId = dataArray.length > 0 ? dataArray[dataArray.length - 1].id : 0; // get last ID or 0 if array is empty
+    data.id = lastId + 1; // increment ID
+  
+    dataArray.push(data); // add new data to array
+  
+    fs.writeFile('data.json', JSON.stringify(dataArray), (err) => {
+      if (err) throw err;
+      console.log('Data written to file');
+    });
+  });
+
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
 };
 
 const postRawBody = (req, res) => {
 
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-  console.log(`Received time: ${new Date().toLocaleTimeString()}`);
-
-  const timestamp = req.body.hora;
-  const fecha = new Date(timestamp * 1000);
-  console.log("Device send date: " + fecha )
-
-  Object.entries(req.body).forEach(([key, value]) => {
-    if (value != undefined) {
-      console.log(key + " -> " + value);
-    }
-  });
+  console.log("Raw data: " + "\n");
+  console.log(req.body);
   console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
 
 
