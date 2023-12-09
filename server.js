@@ -41,16 +41,6 @@ app.get('/status', async (req, res) => {
   res.json(status);
 });
 
-
-// setup the logger with chalk
-// app.use(morgan('combined', {
-//   stream: {
-//     write: str => {
-//       console.log(logger.info(str));
-//     }
-//   }
-// }));
-
 // Start server
 const port = process.env.PORT || 4000;
 
