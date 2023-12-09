@@ -1,4 +1,4 @@
-# Use an official Node.js runtime as the base image
+# Use an official Node.js latest version runtime as a parent image
 FROM node:latest
 
 # Set the working directory in the container to /app
