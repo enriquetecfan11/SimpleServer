@@ -42,4 +42,20 @@ Start Server Developer Mode:
 $ npm run dev
 ```
 
+## 📦 Use Docker Container
+
+Create Docker Image:
+
+```console
+$ docker build -t simple-server .
+```
+
+Run Docker Container:
+
+```console
+$ docker run -d -p 4000:4000 simple-server
+```
+The flag -d is for run the container in background
+The flag -p is for map the port 4000 of the container to the port 4000 of the host
+
 Made with ❤️ by Enrique Rodriguez Vela
