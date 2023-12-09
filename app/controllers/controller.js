@@ -1,112 +1,43 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 
-const handleCommonData = (req, res) => {
-  const date = new Date();
-  const timeString = date.toLocaleTimeString();
-  const {
-    dispositivo,
-    horaDispositivo: hora,
-    wind: windspeed,
-    dirWind: winddirection,
-    luxes,
-    wifirrsi,
-    rain,
-    temperatura,
-    humedadAire: humedad,
-    temp1: temperatura1,
-    hum1: humedad1,
-    altura,
-    presion,
-  } = req.body;
+async function saveMeasurement(data) {
+  try {
+    let fileData = await fs.readFile('data.json', 'utf8');
+    let dataArray = fileData ? JSON.parse(fileData) : [];
+    let lastId = dataArray.length > 0 ? dataArray[dataArray.length - 1].id : 0;
+    data.id = lastId + 1;
+    dataArray.push(data);
+    await fs.writeFile('data.json', JSON.stringify(dataArray));
+    return data;
+  } catch (err) {
+    throw new Error('Error processing file: ' + err.message);
+  }
+}
 
-  const discretizeWind = (direction) => {
-    const directions = {
-      0: "N",
-      1: "NE",
-      2: "E",
-      3: "SE",
-      4: "S",
-      5: "SW",
-      6: "W",
-      7: "NW",
-    };
-    const sector = Math.floor(((direction % 360) / 45));
-    return directions[sector];
-  };
 
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-  console.log("Received time: " + timeString + "\n");
-  console.log("Device: " + dispositivo + "\n");
-  console.log("Temperature: " + temperatura + "\n");
-  console.log("Device send time -> " + hora + "\n");
-  console.log("Humidity: " + humedad + "\n");
-  console.log("Rain: " + rain + "\n");
-  console.log("Windspeed: " + windspeed + "\n");
-  console.log("Winddirection: " + winddirection + "\n");
-  console.log("Real Win Direction: " + discretizeWind(winddirection) + "\n");
+const postMedidas = async (req, res) => {
+  try {
+    const receivedTime = new Date().toLocaleTimeString();
+    const { dispositivo, temperatura, altura, presion, luxes, wifiRsii, hora } = req.body;
+    const deviceTime = new Date(hora * 1000);
+    const data = { dispositivo, temperatura, altura, presion, luxes, wifiRsii, receivedTime, deviceTime };
 
-  res.status(201).json({
-    status: "OK",
-    data: req.body,
-  });
-};
-
-const postMedidas = (req, res) => {
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
-  console.log(`Received time: ${new Date().toLocaleTimeString()}`);
-  handleCommonData(req, res);
-
-  // Get data from handelCommonData and save it to a file called data.json
-  const date = new Date();
-  const timeString = date.toLocaleTimeString();
-  const {
-    dispositivo,
-    temperatura,
-    humedad,
-  } = req.body;
-
-  let data = {
-    dispositivo,
-    temperatura,
-    humedad,
-    timeString,
-  };
-
-  console.log(data);
-
-  console.log("Device: " + data.dispositivo + "\n");
-  console.log("Temperature: " + data.temperatura + "\n");
-  console.log("Humidity: " + data.humedad + "\n");
-  console.log("Time: " + data.timeString + "\n");
-
-  fs.readFile('data.json', 'utf8', (err, fileData) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ error: 'Error reading file' });
-    }
-
-    let dataArray;
-    if (fileData) {
-      dataArray = JSON.parse(fileData); // convert file data to JSON array
-    } else {
-      dataArray = []; // initialize as empty array if file is empty
-    }
-
-    let lastId = dataArray.length > 0 ? dataArray[dataArray.length - 1].id : 0; // get last ID or 0 if array is empty
-    data.id = lastId + 1; // increment ID
-
-    dataArray.push(data); // add new data to array
-
-    fs.writeFile('data.json', JSON.stringify(dataArray), (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ error: 'Error writing file' });
-      }
-      console.log('Data written to file');
+    console.table({
+      "Received Time": receivedTime,
+      "Device Time": data.deviceTime,
+      "Device": dispositivo,
+      "Temperature": temperatura,
+      "Height": altura,
+      "Pressure": presion,
+      "Light": luxes,
+      "Wifi": wifiRsii
     });
-  });
 
-  console.log("-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-" + "\n");
+    const savedData = await saveMeasurement(data);
+    res.status(201).json({ status: "OK", data: savedData });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 const postRawBody = (req, res) => {
@@ -160,9 +91,10 @@ const postdosmedidasSuelo = (req, res) => {
   });
 }
 
+
 module.exports = {
   postMedidas,
-  postdosmedidas,
   postRawBody,
+  postdosmedidas,
   postdosmedidasSuelo
 };

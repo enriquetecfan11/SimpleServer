@@ -6,18 +6,48 @@
     "humedad": 0,
     "timeString": "00:00:00"
   },
-  { 
-    "id": 2,
-    "dispositivo": "Prueba",
-    "temperatura": 0,
-    "humedad": 0,
-    "timeString": "00:00:00"
+  {
+    "dispositivo": "MiniEstacionWifi",
+    "temperatura": 22.89999962,
+    "altura": 658.7390137,
+    "presion": 93651,
+    "luxes": 18.33333206,
+    "wifiRsii": -48,
+    "receivedTime": "14:22:04",
+    "deviceTime": "2023-12-09T13:22:00.000Z",
+    "id": 2
   },
   {
-    "id": 3,
-    "dispositivo": "Prueba",
-    "temperatura": 0,
-    "humedad": 0,
-    "timeString": "00:00:00"
+    "dispositivo": "MiniEstacionWifi",
+    "temperatura": 22.89999962,
+    "altura": 660.1586914,
+    "presion": 93646,
+    "luxes": 22.5,
+    "wifiRsii": -44,
+    "receivedTime": "14:23:07",
+    "hora": 1702128186,
+    "id": 3
+  },
+  {
+    "dispositivo": "MiniEstacionWifi",
+    "temperatura": 22.89999962,
+    "altura": 659.803894,
+    "presion": 93647,
+    "luxes": 16.66666603,
+    "wifiRsii": -42,
+    "receivedTime": "14:24:31",
+    "deviceTime": "2023-12-09T13:24:30.000Z",
+    "id": 4
+  },
+  {
+    "dispositivo": "MiniEstacionWifi",
+    "temperatura": 22.89999962,
+    "altura": 660.0702515,
+    "presion": 93643,
+    "luxes": 17.5,
+    "wifiRsii": -46,
+    "receivedTime": "14:25:08",
+    "deviceTime": "2023-12-09T13:25:06.000Z",
+    "id": 5
   }
 ]
